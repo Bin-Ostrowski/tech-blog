@@ -20,26 +20,18 @@ Post.init(
         allowNull: false
       },
       content: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             //content must be at least one characters long
             len: [1]
           }
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id'
-        }
-      }
+   
     },
     {
       sequelize,
-      freezeTableName: true,
-      underscored: true,
-      modelName: 'post'
+
     }
   );
 

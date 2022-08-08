@@ -75,7 +75,7 @@
   }
   
   header {
-    background-color: brown;
+    background-color: rgb(51, 28, 2);
     /* border-bottom: 1px solid #ccc; */
     display: flex;
     justify-content: space-between;
@@ -99,7 +99,7 @@
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: #9c9fa3;
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
@@ -108,7 +108,7 @@
   
   .btn-no-style:hover {
     background: none;
-    color: #3486eb;
+    color: #9c9fa3;
   }
   
   .delete-post-btn {
@@ -162,10 +162,3 @@
     margin-bottom: 5%;
   }
   
-  footer {
-    border-top: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    padding: 1%;
-    font-size: 110%;
-  }

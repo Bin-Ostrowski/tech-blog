@@ -1,10 +1,5 @@
-<!--WHEN I visit the site for the first time
-THEN I am presented with the homepage which includes 
-- existing blog posts if any have been posted; 
-- navigation links for the homepage and the dashboard; 
-- and the option to log in -->
+
 <ol class="post-list">
-    <!--with #each - Any HTML code in between (e.g., the <li> element) will be repeated for every item in posts-->
     {{#each posts as |post|}}
   <li>
     {{> post-info post }}
@@ -12,5 +7,4 @@ THEN I am presented with the homepage which includes
   {{/each}}
 </ol>
 
-<!--WHEN I click on the homepage option
-THEN I am taken to the homepage
+

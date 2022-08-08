@@ -8,16 +8,11 @@ const { Post, User, Comment, } = require('../models');
 // get all posts for homepage
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: [
-      'id',
-      'content',
-      'title',
-      'created_at',
-    ],
+  
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        
         include: {
           model: User,
           attributes: ['username']
@@ -38,7 +33,6 @@ router.get('/', (req, res) => {
         posts,
         //can now use loggedIn in {{#if}} statments in handlebars
 
-        //!!!!!!!!uncomment this when sesson is initiated
         loggedIn: req.session.loggedIn
      });
     })
@@ -54,24 +48,19 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'cont',
-      'title',
-      'created_at',
-    ],
+
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+
         include: {
           model: User,
-          attributes: ['username']
+          
         }
       },
       {
         model: User,
-        attributes: ['username']
+        
       }
     ]
   })
@@ -88,8 +77,6 @@ router.get('/post/:id', (req, res) => {
       res.render('single-post', { 
         post,
         //can now use loggedIn in {{#if}} statments in handlebars
-
-        //uncomment when session is logged In
         loggedIn: req.session.loggedIn });
     })
     .catch(err => {
@@ -98,14 +85,14 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-// //render login page
-// router.get('/login', (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
+//render login page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
-//   res.render('login');
-// });
+  res.render('login');
+});
 
 module.exports = router;

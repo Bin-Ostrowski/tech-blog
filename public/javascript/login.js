@@ -7,10 +7,7 @@ async function loginFormHandler(event) {
   
     //validate all fields have content with conditional statment before posting
     if ( email && password) {
-        //To use await, add the await keyword before the Promise
-        //When using await, we can assign the result of the promise to a variable. 
-        //For example, const response = await fetch();. 
-        //This way, we don't need to use catch() or then() to tell the code what to do after the Promise completes.
+        
       const response = await fetch('/api/users/login', {
         method: 'post',
         body: JSON.stringify({
@@ -22,7 +19,6 @@ async function loginFormHandler(event) {
   
       //check the response status
       if(response.ok) {
-        //is this a mistake in the code? because it doesnt work with it. 
         document.location.replace('/dashboard');
         console.log('sucessful login');
       } else {
@@ -41,10 +37,7 @@ async function loginFormHandler(event) {
     
       //validate all fields have content with conditional statment before posting
       if (username && email && password) {
-          //To use await, add the await keyword before the Promise
-          //When using await, we can assign the result of the promise to a variable. 
-          //For example, const response = await fetch();. 
-          //This way, we don't need to use catch() or then() to tell the code what to do after the Promise completes.
+        
         const response = await fetch('/api/users', {
           method: 'post',
           body: JSON.stringify({

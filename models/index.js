@@ -2,30 +2,19 @@ const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 
-//a one-to-many relationship
-User.hasMany(Post, {
-    // foreignKey: 'user_id'
-});
 
 //reverse association - a post can belong to one user, but not many users
-Post.belongsTo(User, {
-    // foreignKey: 'user_id',
+Post.belongsTo(User, { 
+    foreignKey:'user_id'  
 });
 
-Comment.belongsTo(User, {
-    // foreignKey: 'user_id'
-});
-
-Comment.belongsTo(Post, {
-    // foreignKey: 'post_id'
-});
-
-User.hasMany(Comment, {
-    // foreignKey: 'user_id'
+//are these two belongsTo duplicates?
+Comment.belongsTo(User, {  
+    foreignKey:'user_id' 
 });
 
 Post.hasMany(Comment, {
-    // foreignKey: 'post_id'
+    foreignKey:'post_id'
 });
 
 

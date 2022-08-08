@@ -1,51 +1,42 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 //add with login session - add withAuth
 const { Post, User, Comment } = require('../models');
 
 //add middleware withAuth, to authgaurd the route
 //get all posts for dashboard
-router.get('/', (req, res) => {
+router.get('/',withAuth, (req, res) => {
     //only display posts created by the logged in user
     //add a where object to findAll() query that uses id saved on the session.
     Post.findAll({
       where: {
         // use the ID from the session
-        user_id:req.body.user_id
-        // user_id: req.session.user_id
+        user_id: req.session.user_id
       },
-      attributes: [
-        'id',
-        'content',
-        'title',
-        'created_at',
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
+
+     
     })
       .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        console.log(posts)
+        res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
 });
+
+//new post route
+router.get('/new', withAuth, (req, res) => {
+    res.render('newPost', {
+        loggedIn: req.session.loggedIn
+    })
+})
+
+
 
 // //get edit posts
 // router.get('/edit/:id', withAuth, (req, res) => {
