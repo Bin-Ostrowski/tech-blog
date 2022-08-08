@@ -1,0 +1,15 @@
+<!-- only need post_url, not post.post_url because object 
+referenced is post.object which destructurs in partials -->
+<article class="post">
+      <div class="title">
+        {{title}}
+      </div>
+
+      <div class="content">
+        {{content}}
+      </div>
+
+      <div class="meta">
+        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+      </div>
+    </article>
