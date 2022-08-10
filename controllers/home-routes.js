@@ -8,19 +8,16 @@ const { Post, User, Comment, } = require('../models');
 // get all posts for homepage
 router.get('/', (req, res) => {
   Post.findAll({
-  
     include: [
       {
         model: Comment,
-        
+       
         include: {
           model: User,
-          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['username']
       }
     ]
   })
@@ -48,19 +45,15 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-
     include: [
       {
         model: Comment,
-
         include: {
           model: User,
-          
         }
       },
       {
         model: User,
-        
       }
     ]
   })
@@ -85,6 +78,18 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+//render comments
+
+router.get('/', (req, res) => {
+  Comment.findAll()
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
 //render login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -94,5 +99,15 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+//render signup page
+router.get('/sign-up', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('sign-up');
+  });
 
 module.exports = router;

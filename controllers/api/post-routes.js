@@ -25,32 +25,32 @@ router.post('/',withAuth, (req, res) => {
 });
 
 
-// //Update a post's title
-// router.put('/:id', withAuth, (req, res) => {
-//     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+//Update a post's title
+router.put('/:id', withAuth, (req, res) => {
+    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
-//     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-//     Post.update( 
-//     {
-//         title: req.body.title
-//     },
-//     {  
-//       where: {
-//         id: req.params.id
-//       }
-//     })
-//       .then(dbPostData => {
-//         if (!dbPostData[0]) {
-//           res.status(404).json({ message: 'No post found with this id' });
-//           return;
-//         }
-//         res.json(dbPostData);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
+    // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+    Post.update( 
+    {
+        title: req.body.title
+    },
+    {  
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbPostData => {
+        if (!dbPostData[0]) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbPostData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 //delete a post
 router.delete('/:id', (req, res) => {

@@ -1,0 +1,36 @@
+<!-- partial for post html -->
+{{> post-info post }}
+
+<!--only shows if logged in -->
+{{#if loggedIn}}
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>
+{{/if}}
+
+
+<!-- partial for comments html-->
+{{#each post.Comments}}
+<div class="comments">
+
+  <section class="comment">
+    <div class="meta">
+      {{this.user.username}} on {{format_date this.createdAt}}
+    </div>
+    <div class="text">
+      {{this.comment_text}}
+    </div>
+  </section>
+
+</div>
+{{/each}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

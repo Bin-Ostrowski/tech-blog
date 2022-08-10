@@ -18,7 +18,7 @@
   }
   
   a:hover {
-    color: #41bd8d;
+    color: #404241;
   }
   
   button {
@@ -108,7 +108,7 @@
   
   .btn-no-style:hover {
     background: none;
-    color: #9c9fa3;
+    color: #383c41;
   }
   
   .delete-post-btn {

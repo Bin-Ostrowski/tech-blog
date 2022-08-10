@@ -2,6 +2,7 @@
 THEN I am prompted to either sign up or sign in-->
 
 <form class="login-form">
+  <h1>Login</h1>
   <div>
     <label for="email-login">email:</label>
     <input type="text" id="email-login" />
@@ -13,26 +14,11 @@ THEN I am prompted to either sign up or sign in-->
   <div>
     <button type="submit">login</button>
   </div>
+  <div>
+    <a href="/sign-up">Sign up instead</a>
+  </div>
 </form>
 
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
-  </div>
-  
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
 
 <script src="/javascript/login.js"></script>
 
