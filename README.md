@@ -27,7 +27,7 @@ https://murmuring-headland-96223.herokuapp.com/
 
 ## Screenshot
 
-![Screenshot](screenshot.png)
+![Screenshot](./public/images/screenshot.png)
 
 ## Questions
 
